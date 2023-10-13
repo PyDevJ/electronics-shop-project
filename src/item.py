@@ -21,6 +21,14 @@ class Item:
         self.quantity = quantity
         self.all.append(self)
 
+    def __repr__(self):
+        """Магический метод `__repr__`."""
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        """Магический метод `__str__`."""
+        return f"{self.name}"
+
     # добавить геттер для `name`, используя @property
     @property
     def name(self):
@@ -49,7 +57,7 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, path):
-        """Инициализирует экземпляры класса из 'csv' файла"""
+        """Инициализирует экземпляры класса из 'csv' файла."""
         path = os.path.relpath('../' + path, '')
         cls.all.clear()
         with open(path, newline='') as csvfile:
@@ -59,7 +67,7 @@ class Item:
 
     @staticmethod
     def string_to_number(number):
-        """Статический метод, возвращающий число из числа-строк"""
+        """Статический метод, возвращающий число из числа-строк."""
         r_number = number.replace('.', '', 1).isdigit()
         if r_number:
             o_number = float(number)

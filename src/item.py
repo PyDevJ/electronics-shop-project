@@ -72,3 +72,12 @@ class Item:
         if r_number:
             o_number = float(number)
             return int(o_number)
+
+    def __add__(self, other):
+        """
+        Реализует проверку, чтобы нельзя было сложить `Phone` или `Item`
+        с экземплярами не `Phone` или `Item` классов.
+        """
+        if issubclass(other.__class__, self.__class__):
+            return self.quantity + other.quantity
+        return self.quantity

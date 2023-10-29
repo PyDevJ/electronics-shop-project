@@ -16,6 +16,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
+        super().__init__()  # вызов конструктора родительского класса
         self.__name = name  # атрибут `name` сделать приватным
         self.price = price
         self.quantity = quantity
